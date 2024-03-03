@@ -47,7 +47,7 @@ local hsl = lush.hsl
 
 local Black = hsl(0, 0, 0)
 local White = hsl(0, 100, 100)
-local DarkMud = hsl(20, 100, 2)
+local DarkMud = hsl(20, 100, 3)
 local Charcoal = hsl(0, 0, 10)
 local Purple = hsl(300, 40, 20)
 local SunsetGold = hsl(35, 100, 50)
@@ -64,6 +64,7 @@ local LingeringLeaf = hsl(120, 40, 28)
 local Evergreen = hsl(120, 30, 10)
 local Cider = hsl(20, 100, 15)
 local Wine = hsl(350, 80, 10)
+local DarkHoney = hsl(20, 90, 8)
 local DeadLeaf = hsl(30, 50, 60)
 
 
@@ -105,7 +106,7 @@ local theme = lush(function(injected_functions)
 		Folded         { bg = DarkMud }, -- Line used for closed folds
 		FoldColumn     { bg = DarkMud }, -- 'foldcolumn'
 		SignColumn     { bg = DarkMud }, -- Column where |signs| are displayed
-		IncSearch      { fg = Black, bg = SunsetGold }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		IncSearch      { CurSearch }, --fg = Black, bg = SunsetGold }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		Substitute     { fg = Black, bg = PumpkinOrange }, -- |:substitute| replacement text highlighting
 		LineNr         { fg = CrispBlueSky }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		LineNrAbove    { LineNr }, -- Line number for when the 'relativenumber' option is set, above the cursor line
@@ -140,8 +141,8 @@ local theme = lush(function(injected_functions)
 		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		-- StatusLine     { }, -- Status line of current window
-		-- StatusLineNC   { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLine     { fg = White, bg = DarkHoney }, -- Status line of current window
+		StatusLineNC   { fg = PumpkinOrange, bg = DarkMud }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		-- TabLine        { }, -- Tab pages line, not active tab page label
 		-- TabLineFill    { }, -- Tab pages line, where there are no labels
 		-- TabLineSel     { }, -- Tab pages line, active tab page label
@@ -249,27 +250,27 @@ local theme = lush(function(injected_functions)
 		-- DiagnosticSignHint         { } , -- Used for "Hint" signs in sign column.
 		-- DiagnosticSignOk           { } , -- Used for "Ok" signs in sign column.
 
-		sym"BufferCurrent" { fg = CumulousGray },
-		sym"BufferCurrentERROR" { fg = BloodRed },
-		sym"BufferCurrentHINT" { fg = CrispBlueSky },
+		sym"BufferCurrent" { fg = CumulousGray, bg = DarkHoney },
+		sym"BufferCurrentERROR" { fg = BloodRed, bg = DarkHoney },
+		sym"BufferCurrentHINT" { fg = CrispBlueSky, bg = DarkHoney },
 		-- sym"BufferCurrentIcon" { },
-		sym"BufferCurrentINFO" { fg = PumpkinOrange },
-		sym"BufferCurrentWARN" { fg = SunsetGold },
-		sym"BufferCurrentIndex" { fg = LingeringLeaf },
-		sym"BufferCurrentMod" { fg = CrispBlueSky },
-		sym"BufferCurrentSign" { fg = CumulousGray },
-		sym"BufferCurrentTarget" { fg = White },
+		sym"BufferCurrentINFO" { fg = PumpkinOrange, bg = DarkHoney },
+		sym"BufferCurrentWARN" { fg = SunsetGold, bg = DarkHoney },
+		sym"BufferCurrentIndex" { fg = LingeringLeaf, bg = DarkHoney },
+		sym"BufferCurrentMod" { fg = CrispBlueSky, bg = DarkHoney },
+		sym"BufferCurrentSign" { fg = CumulousGray, bg = DarkHoney },
+		sym"BufferCurrentTarget" { fg = White , bg = DarkHoney},
 
-		sym'BufferVisible' { fg = OvercastGray },
-		sym'BufferVisibleERROR' { fg = SunsetRed },
-		sym'BufferVisibleHINT' { fg = HazyBlueSky },
+		sym'BufferVisible' { fg = OvercastGray, bg = DarkMud },
+		sym'BufferVisibleERROR' { fg = SunsetRed, bg = DarkMud },
+		sym'BufferVisibleHINT' { fg = HazyBlueSky, bg = DarkMud },
 		-- sym'BufferVisibleIcon' { },
-		sym'BufferVisibleINFO' { fg = Rust },
-		sym'BufferVisibleWARN' { fg = PumpkinOrange },
-		sym'BufferVisibleIndex' { fg =Evergreen  },
-		sym'BufferVisibleMod' { fg = HazyBlueSky },
-		sym'BufferVisibleSign' { fg = OvercastGray },
-		sym'BufferVisibleTarget' { fg = CumulousGray },
+		sym'BufferVisibleINFO' { fg = Rust, bg = DarkMud },
+		sym'BufferVisibleWARN' { fg = PumpkinOrange, bg = DarkMud },
+		sym'BufferVisibleIndex' { fg =Evergreen, bg = DarkMud  },
+		sym'BufferVisibleMod' { fg = HazyBlueSky, bg = DarkMud },
+		sym'BufferVisibleSign' { fg = OvercastGray, bg = DarkMud },
+		sym'BufferVisibleTarget' { fg = CumulousGray, bg = DarkMud },
 
 		--[[
 		sym'BufferAlternate' { bg = c.fg_gutter, fg = c.fg },
@@ -284,20 +285,20 @@ local theme = lush(function(injected_functions)
 		sym'BufferAlternateWARN' { bg = c.fg_gutter, fg = c.warning },
 		]]
 
-		sym'BufferInactive' { fg = OvercastGray },
-		sym'BufferInactiveERROR' { fg = SunsetRed },
-		sym'BufferInactiveHINT' { fg = HazyBlueSky },
+		sym'BufferInactive' { fg = OvercastGray, bg = DarkMud },
+		sym'BufferInactiveERROR' { fg = SunsetRed, bg = DarkMud },
+		sym'BufferInactiveHINT' { fg = HazyBlueSky, bg = DarkMud },
 		-- sym'BufferInactiveIcon' { },
-		sym'BufferInactiveINFO' { fg = Rust },
-		sym'BufferInactiveWARN' { fg = PumpkinOrange },
-		sym'BufferInactiveIndex' { fg = Evergreen },
-		sym'BufferInactiveMod' { fg = HazyBlueSky },
-		sym'BufferInactiveSign' { fg = OvercastGray },
-		sym'BufferInactiveTarget' { fg = CumulousGray },
+		sym'BufferInactiveINFO' { fg = Rust, bg = DarkMud },
+		sym'BufferInactiveWARN' { fg = PumpkinOrange, bg = DarkMud },
+		sym'BufferInactiveIndex' { fg = Evergreen, bg = DarkMud },
+		sym'BufferInactiveMod' { fg = HazyBlueSky, bg = DarkMud },
+		sym'BufferInactiveSign' { fg = OvercastGray, bg = DarkMud },
+		sym'BufferInactiveTarget' { fg = CumulousGray, bg = DarkMud },
 
-		--BufferOffset = { bg = c.bg_statusline, fg = c.dark5 },
-		--BufferTabpageFill = { bg = util.darken(c.bg_highlight, 0.8), fg = c.dark5 },
-		--BufferTabpages = { bg = c.bg_statusline, fg = c.none },
+		sym'BufferOffset' { bg = DarkMud }, --bg = c.bg_statusline, fg = c.dark5 },
+		sym'BufferTabpageFill' { bg = DarkMud }, -- bg = util.darken(c.bg_highlight, 0.8), fg = c.dark5 },
+		sym'BufferTabpages' { bg = DarkMud } -- bg = c.bg_statusline, fg = c.none },
 
 
 		-- Tree-Sitter syntax groups.
