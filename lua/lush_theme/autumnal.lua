@@ -176,7 +176,7 @@ local theme = lush(function(injected_functions)
 		-- Float			{ }, --   A floating point constant: 2.3e10
 
 		Identifier      { fg = DeadLeaf }, -- (*) Any variable name
-		--Function        { }, --   Function name (also: methods for classes)
+		Function        { fg = SunsetMauve }, --   Function name (also: methods for classes)
 
 		Statement       { fg = PumpkinOrange }, -- (*) Any statement
 		--Conditional     { }, --   if, then, else, endif, switch, etc.
@@ -298,7 +298,7 @@ local theme = lush(function(injected_functions)
 
 		sym'BufferOffset' { bg = DarkMud }, --bg = c.bg_statusline, fg = c.dark5 },
 		sym'BufferTabpageFill' { bg = DarkMud }, -- bg = util.darken(c.bg_highlight, 0.8), fg = c.dark5 },
-		sym'BufferTabpages' { bg = DarkMud } -- bg = c.bg_statusline, fg = c.none },
+		sym'BufferTabpages' { bg = DarkMud }, -- bg = c.bg_statusline, fg = c.none },
 
 
 		-- Tree-Sitter syntax groups.
@@ -353,7 +353,7 @@ local theme = lush(function(injected_functions)
 		-- sym"@operator"          { }, -- Operator
 		-- sym"@keyword"           { }, -- Keyword
 		-- sym"@exception"         { }, -- Exception
-		-- sym"@variable"          { }, -- Identifier
+		sym"@variable"          { fg = SunsetRed }, -- Identifier
 		-- sym"@type"              { }, -- Type
 		-- sym"@type.definition"   { }, -- Typedef
 		-- sym"@storageclass"      { }, -- StorageClass
